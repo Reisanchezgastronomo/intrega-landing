@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const modalities = [
   {
@@ -119,33 +120,54 @@ export default function Home() {
         </div>
       </section>
 
+
       <section id="trayectoria" className="scroll-mt-24 bg-[#e6e8e1] px-5 py-20 text-[#14211e] sm:px-8 md:py-28">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#49645a]">Quién dirige</p>
-            <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">Rei Sánchez</h2>
-            <p className="mt-4 text-lg font-medium">Ingeniero mecánico · Maestro panadero · Directivo de operaciones F&B</p>
-            <p className="mt-6 max-w-lg leading-relaxed text-[#465b53]">Combino ingeniería, producción gastronómica, dirección de equipos y gestión económica. Mi enfoque integra productividad, identidad empresarial y capacidad de ejecución.</p>
-            <a href="https://www.linkedin.com/in/reisanchez-fyb-operations/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex font-semibold underline decoration-[#8aa494] underline-offset-8 hover:decoration-[#14211e]">
-              Revisar trayectoria profesional en LinkedIn
-            </a>
+        <div className="mx-auto max-w-6xl">
+          <div className="grid items-center gap-10 md:grid-cols-[minmax(220px,360px)_1fr] md:gap-16">
+            <figure className="mx-auto w-full max-w-[360px] overflow-hidden rounded-2xl bg-[#bfc9c0] shadow-[0_24px_60px_rgba(10,23,17,0.14)]">
+              <Image
+                src="/rei-sanchez-retrato.webp"
+                alt="Retrato ejecutivo de Rei Sánchez"
+                width={480}
+                height={527}
+                sizes="(max-width: 767px) 90vw, 360px"
+                className="block h-auto w-full"
+              />
+            </figure>
+            <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#49645a]">Quién dirige</p>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">Rei Sánchez</h2>
+              <p className="mt-4 text-lg font-medium">Ingeniero mecánico · Maestro panadero · Directivo de operaciones F&B</p>
+              <p className="mt-6 max-w-2xl leading-relaxed text-[#465b53]">
+                Combino ingeniería, producción gastronómica, dirección de equipos y gestión económica. Mi enfoque integra productividad, identidad empresarial y capacidad de ejecución.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/reisanchez-fyb-operations/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex font-semibold underline decoration-[#8aa494] underline-offset-8 hover:decoration-[#14211e]"
+              >
+                Revisar trayectoria profesional en LinkedIn
+              </a>
+            </div>
           </div>
-          <div className="space-y-5">
-            <p className="text-sm font-semibold uppercase tracking-wider text-[#49645a]">Experiencia de dirección y gestión</p>
-            <div className="border-t border-[#14211e]/20 pt-5">
+          <div className="mt-16 grid gap-8 border-t border-[#14211e]/20 pt-8 md:grid-cols-3">
+            <div>
               <h3 className="text-xl font-semibold">Panaderei</h3>
-              <p className="mt-1 text-[#465b53]">Gerencia general de operación de panadería, producción y desarrollo de equipos.</p>
+              <p className="mt-3 leading-relaxed text-[#465b53]">Gerencia general de operación de panadería, producción y desarrollo de equipos.</p>
             </div>
-            <div className="border-t border-[#14211e]/20 pt-5">
+            <div>
               <h3 className="text-xl font-semibold">Vistacampo</h3>
-              <p className="mt-1 text-[#465b53]">Compras y abastecimiento en una operación alimentaria de producción continua.</p>
+              <p className="mt-3 leading-relaxed text-[#465b53]">Compras y abastecimiento en una operación alimentaria de producción continua.</p>
             </div>
-            <div className="border-t border-[#14211e]/20 pt-5">
+            <div>
               <h3 className="text-xl font-semibold">Marroc Bar</h3>
-              <p className="mt-1 text-[#465b53]">Dirección de una operación gastronómica multisede y de equipos de servicio.</p>
+              <p className="mt-3 leading-relaxed text-[#465b53]">Dirección de una operación gastronómica multisede y de equipos de servicio.</p>
             </div>
-            <p className="text-sm text-[#52685f]">Los resultados cuantitativos de cada caso se presentan únicamente cuando exista evidencia apropiada y contexto.</p>
           </div>
+          <p className="mt-7 text-sm text-[#52685f]">
+            Los resultados cuantitativos de cada caso se presentan únicamente cuando exista evidencia apropiada y contexto.
+          </p>
         </div>
       </section>
 

@@ -37,3 +37,15 @@ npm run dev
 
 **Tecnología heredada:** Next.js, React, TypeScript y Tailwind CSS.  
 **Autor del proyecto de origen:** Adrià Ávila / creativ3.
+
+## Fotografía ejecutiva
+- Imagen autorizada por el propietario: `public/rei-sanchez-retrato.webp` (480 × 527 píxeles, WebP optimizado desde la fotografía suministrada).
+- Ubicada exclusivamente en «Quién dirige»; no se usa en el hero principal.
+- No se han realizado modificaciones artísticas ni alteraciones de rasgos.
+
+## Publicación Netlify
+- Hospedaje propuesto: Netlify Free, sin contratar un plan de pago.
+- Conectar GitHub al panel de Netlify y elegir este repositorio, rama `main`.
+- Framework Next.js; comando `npm run build`; salida `.next`.
+- Confirmar que el sitio sea público y verificar la dirección `*.netlify.app`.
+- No utilizar GitHub Pages como alojamiento de esta landing comercial.

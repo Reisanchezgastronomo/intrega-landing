@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: "es_CO",
     type: "website",
   },
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
   icons: { icon: "/favicon.svg" },
 };
 
