@@ -1,71 +1,24 @@
-"use client";
-
 import Link from "next/link";
 
 export function Footer() {
-    return (
-        <footer className="relative bg-[#0a0a0a] border-t border-white/10">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
-                <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
-                    {/* Brand */}
-                    <div className="flex flex-col gap-4">
-                        <Link href="/" className="flex items-center gap-3">
-                            <svg
-                                className="w-8 h-8"
-                                viewBox="0 0 32 32"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <circle cx="16" cy="16" r="15" fill="var(--brand-primary)" />
-                                <rect x="13" y="7" width="6" height="18" rx="1" fill="#F5F5F5" />
-                                <rect x="13" y="7" width="10" height="5" rx="1" fill="#F5F5F5" />
-                                <rect x="9" y="20" width="10" height="5" rx="1" fill="#F5F5F5" />
-                                <circle cx="25" cy="9.5" r="2" fill="var(--brand-accent)" />
-                                <circle cx="7" cy="22.5" r="2" fill="var(--brand-accent)" />
-                            </svg>
-                            <h3 className="font-mono text-sm tracking-[0.3em] text-white/60 uppercase">
-                                INTEGRA
-                            </h3>
-                        </Link>
-                        <p className="text-white/40 text-sm max-w-xs">
-                            Consultoría y transformación digital para hospitalidad y retail.
-                        </p>
-                    </div>
-
-                    {/* Navigation Links */}
-                    <div className="flex flex-col md:flex-row gap-8 md:gap-16">
-                        <div>
-                            <h4 className="text-white/80 text-sm font-semibold mb-4">Navegación</h4>
-                            <nav className="flex flex-col gap-2">
-                                <Link href="/nosotros" className="text-white/40 text-sm hover:text-white/70 transition-colors">
-                                    Nosotros
-                                </Link>
-                                <Link href="/servicios" className="text-white/40 text-sm hover:text-white/70 transition-colors">
-                                    Servicios
-                                </Link>
-                                <Link href="/recursos" className="text-white/40 text-sm hover:text-white/70 transition-colors">
-                                    Recursos
-                                </Link>
-                                <Link href="/blog" className="text-white/40 text-sm hover:text-white/70 transition-colors">
-                                    Blog
-                                </Link>
-                                <Link href="/contacto" className="text-white/40 text-sm hover:text-white/70 transition-colors">
-                                    Contacto
-                                </Link>
-                            </nav>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                {/* Bottom bar */}
-                <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-white/30 text-xs font-mono">
-                        © 2026 INTEGRA. Consultoría y transformación digital para hospitalidad y retail.
-                    </p>
-                </div>
-            </div>
-        </footer>
-    );
+  return (
+    <footer className="border-t border-white/10 bg-[#080e11] px-5 py-12 text-[#b7c4bd] sm:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div>
+          <Link href="/" className="text-base font-semibold tracking-wide text-white">Rei Sánchez | Dirección Ejecutiva</Link>
+          <p className="mt-2 text-sm">Dirección Ejecutiva · Transformación · Autonomía</p>
+          <p className="mt-1 text-sm text-[#d7b98c]">Simplificar para transformar.</p>
+        </div>
+        <div className="flex flex-wrap gap-5 text-sm">
+          <Link href="/#modalidades" className="hover:text-white">Modalidades</Link>
+          <Link href="/#trayectoria" className="hover:text-white">Trayectoria</Link>
+          <Link href="/contacto" className="hover:text-white">Contacto</Link>
+          <a href="https://www.linkedin.com/in/reisanchez-fyb-operations/" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>
+        </div>
+      </div>
+      <div className="mx-auto mt-9 max-w-6xl border-t border-white/10 pt-6 text-xs text-[#82958c]">
+        © {new Date().getFullYear()} Rei Sánchez. Colombia y Venezuela. Dirección de operaciones gastronómicas y de alimentación.
+      </div>
+    </footer>
+  );
 }
