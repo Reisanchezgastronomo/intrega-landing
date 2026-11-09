@@ -1,62 +1,51 @@
-# Intrega Landing
+# Rei Sánchez | Dirección Ejecutiva — adaptación comercial MVP 1.0
 
-Landing page para **Intrega**, una propuesta de consultoría y transformación digital enfocada en operaciones, integración de sistemas y mejora de procesos para negocios del sector hospitalidad.
+**Estado:** borrador en rama independiente, sin publicar. Este repositorio es una bifurcación de `adriaavila/intrega-landing`, proyecto desarrollado por Adrià Ávila / creativ3. La adaptación mantiene esta atribución y no modifica el proyecto original.
 
-**En vivo:** https://intrega-landing.vercel.app · **Categoría:** Web · **Estado:** en producción
+## Objetivo
+Landing ejecutiva mínima para generar confianza cuando propietarios o gerentes generales revisen el perfil después de un primer contacto comercial.
 
-## Qué es este proyecto
+**Marca:** Dirección Ejecutiva · Transformación · Autonomía  
+**Principio:** Simplificar para transformar.
 
-Este proyecto funciona como una pieza comercial y estratégica: no solo presenta servicios, sino que construye una narrativa de diagnóstico, autoridad y propuesta de valor.
+## Alcance de la primera revisión
+- Identidad ejecutiva y propuesta de valor.
+- Tres modalidades de dirección: Fraccionada, Intensiva y Tiempo Completo.
+- Tres sectores: producción/panadería, restaurantes/cafeterías multisede, catering/foodservice.
+- Trayectoria sin atribuir métricas no respaldadas.
+- Contacto mediante enlaces directos a correo, WhatsApp Colombia y LinkedIn.
+- Eliminación del formulario anterior que solo registraba datos en consola.
+- Supresión de navegación activa a páginas antiguas de Integra.
+- Reducción de peso de la portada al no utilizar el escáner animado de fotogramas.
+- Metadatos de identidad actualizados. Indexación desactivada hasta aprobación y publicación.
 
-## El reto
+## No incluido
+No hay backend, CRM, formularios de almacenamiento ni automatizaciones. Los enlaces `mailto:` y WhatsApp abren aplicaciones externas y necesitan una prueba manual antes de publicar. No se garantizan resultados empresariales.
 
-El reto principal fue **convertir un servicio abstracto en una experiencia web que hiciera evidente el problema del cliente antes de vender la solución**.
-
-En proyectos de consultoría, muchas veces el visitante no compra “software”, sino claridad. Por eso el desafío fue:
-
-- comunicar dolor operativo real
-- generar percepción de expertise
-- ordenar una oferta compleja en un mensaje simple
-- diseñar una experiencia con carácter propio, no una landing genérica
-
-## Cómo lo resolví
-
-- Construí una experiencia tipo scrollytelling con una apertura visual fuerte.
-- Organicé la página alrededor de diagnóstico, servicios y manifiesto.
-- Usé motion y progresión narrativa para sostener atención y reforzar posicionamiento.
-- Priorizé un lenguaje orientado a negocio: margen, riesgo, datos, operación.
-
-## Stack
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Vercel Analytics
-
-## Lo que hace valioso este proyecto
-
-Este proyecto muestra cómo usar diseño y desarrollo para **vender transformación, no solo mostrar una empresa**. La web está pensada para que el visitante entienda el costo de no cambiar.
-
-## Aprendizajes
-
-- Las landings B2B mejoran cuando hablan del problema antes que de la empresa.
-- El ritmo visual puede usarse como herramienta de persuasión.
-- Una identidad digital sólida depende tanto del copy como de la interacción.
+## Revisión previa a publicar
+1. Revisar textos, casos citados y aprobación de identidad por el propietario.
+2. Ejecutar `npm install`, `npm run lint`, `npm run build`.
+3. Verificar funcionamiento real de los enlaces y navegación móvil.
+4. Comprobar políticas de privacidad y condiciones del alojamiento elegido.
+5. Sustituir robots `noindex` solo tras fijar dominio definitivo y aprobación.
 
 ## Desarrollo local
-
 ```bash
 npm install
 npm run dev
 ```
 
-## Enlace del proyecto
+**Tecnología heredada:** Next.js, React, TypeScript y Tailwind CSS.  
+**Autor del proyecto de origen:** Adrià Ávila / creativ3.
 
-- Repositorio: https://github.com/adriaavila/intrega-landing
+## Fotografía ejecutiva
+- Imagen autorizada por el propietario: `public/rei-sanchez-retrato.webp` (480 × 527 píxeles, WebP optimizado desde la fotografía suministrada).
+- Ubicada exclusivamente en «Quién dirige»; no se usa en el hero principal.
+- No se han realizado modificaciones artísticas ni alteraciones de rasgos.
 
----
-
-**Construido por [creativ3](https://allok.fun)** — software y automatización para negocios.
-[Ver el portafolio](https://allok.fun/projects) · [Pedir cotización](https://allok.fun/cotizar)
+## Publicación Netlify
+- Hospedaje propuesto: Netlify Free, sin contratar un plan de pago.
+- Conectar GitHub al panel de Netlify y elegir este repositorio, rama `main`.
+- Framework Next.js; comando `npm run build`; salida `.next`.
+- Confirmar que el sitio sea público y verificar la dirección `*.netlify.app`.
+- No utilizar GitHub Pages como alojamiento de esta landing comercial.

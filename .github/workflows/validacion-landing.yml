@@ -1,0 +1,62 @@
+name: Verificación landing ejecutiva
+
+on:
+  push:
+    branches:
+      - mvp/landing-direccion-ejecutiva-v1
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Analizar código
+        run: npm run lint
+      - name: Compilar Next.js
+        run: npm run build
+      - name: Renderizar página real sin despliegue
+        shell: bash
+        run: |
+          set -e
+          BROWSER=$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)
+          if [[ -z "$BROWSER" ]]; then
+            echo "No hay navegador Chromium en el runner; omitiendo capturas."
+            exit 0
+          fi
+          mkdir -p preview
+          npm run start -- -p 3000 >/tmp/next-preview.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" || true' EXIT
+          for i in $(seq 1 45); do
+            if curl --silent --fail http://127.0.0.1:3000/ >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          curl --fail http://127.0.0.1:3000/ >/dev/null
+          "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --screenshot=preview/home-escritorio.png --window-size=1440,7500 --virtual-time-budget=1500 http://127.0.0.1:3000/ >/dev/null 2>&1
+          "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --screenshot=preview/home-movil.png --window-size=390,8000 --virtual-time-budget=1500 http://127.0.0.1:3000/ >/dev/null 2>&1
+          "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --screenshot=preview/contacto.png --window-size=1440,1000 --virtual-time-budget=1500 http://127.0.0.1:3000/contacto >/dev/null 2>&1
+          ls -lh preview
+      - name: Guardar capturas para revisión
+        uses: actions/upload-artifact@v4
+        with:
+          name: landing-ejecutiva-capturas
+          path: preview/
+          if-no-files-found: ignore
+          retention-days: 7
