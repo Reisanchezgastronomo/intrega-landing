@@ -121,6 +121,47 @@ export default function Home() {
       </section>
 
 
+
+      <section id="destinos-gastronomicos" className="scroll-mt-24 border-y border-white/10 bg-[#142121] px-5 py-20 sm:px-8 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#bdd1c1]">Vertical de desarrollo territorial · Venezuela</p>
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+            <div>
+              <h2 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl">Dirección y desarrollo de destinos gastronómicos.</h2>
+              <p className="mt-6 text-lg leading-relaxed text-[#c4d0cb]">
+                Convertimos la identidad gastronómica de un destino en experiencias turísticas de valor.
+                Mejoramos cómo funcionan los negocios con INTEGRA, preparamos sus estándares con Sello Valor
+                y presentamos sus rutas y experiencias al visitante mediante VIAJA.
+              </p>
+              <p className="mt-5 leading-relaxed text-[#bdcbc3]">
+                <strong className="text-white">Venezuela Auténtica</strong> es el MVP comercial de esta iniciativa;
+                Colonia Tovar es su primer demostrador. Rei Sánchez | Dirección Ejecutiva asume la dirección
+                del proyecto y conserva sus modalidades empresariales de servicio.
+              </p>
+              <Link href="/contacto" className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[#bdd1c1] px-6 py-3 font-semibold text-[#102017] transition-colors hover:bg-white">
+                Conversemos sobre el proyecto
+              </Link>
+            </div>
+            <div className="space-y-4">
+              <div className="border-t border-[#bdd1c1]/50 pt-4">
+                <h3 className="text-xl font-semibold">INTEGRA · Transformación operativa</h3>
+                <p className="mt-2 text-[#baccc2]">Intervención en producción, servicio, rentabilidad, equipos y coherencia de la experiencia con la identidad del destino.</p>
+                <a href="https://intrega-landing.vercel.app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-[#bdd1c1] underline underline-offset-4">Conocer INTEGRA</a>
+              </div>
+              <div className="border-t border-white/15 pt-4">
+                <h3 className="text-xl font-semibold">Sello Valor · Estándares en desarrollo</h3>
+                <p className="mt-2 text-[#baccc2]">Estándares de autenticidad, operación y experiencia en preparación. El sello aún no se ha otorgado.</p>
+              </div>
+              <div className="border-t border-white/15 pt-4">
+                <h3 className="text-xl font-semibold">VIAJA · Experiencias del visitante</h3>
+                <p className="mt-2 text-[#baccc2]">Explora rutas e itinerarios de muestra en Colonia Tovar. La compra de experiencias aún no está habilitada.</p>
+                <a href="https://viaja-ven.vercel.app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-[#bdd1c1] underline underline-offset-4">Explorar el demostrador</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="trayectoria" className="scroll-mt-24 bg-[#e6e8e1] px-5 py-20 text-[#14211e] sm:px-8 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="grid items-center gap-10 md:grid-cols-[minmax(220px,360px)_1fr] md:gap-16">
