@@ -28,7 +28,7 @@ export function Footer() {
                             </h3>
                         </Link>
                         <p className="text-white/40 text-sm max-w-xs">
-                            Consultoría y transformación digital para hospitalidad y retail.
+                            Transformación operativa de establecimientos y destinos gastronómicos bajo Dirección Ejecutiva.
                         </p>
                     </div>
 
@@ -62,7 +62,7 @@ export function Footer() {
                 {/* Bottom bar */}
                 <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-white/30 text-xs font-mono">
-                        © 2026 INTEGRA. Consultoría y transformación digital para hospitalidad y retail.
+                        © 2026 INTEGRA. Transformación operativa de establecimientos y destinos gastronómicos bajo Dirección Ejecutiva.
                     </p>
                 </div>
             </div>
