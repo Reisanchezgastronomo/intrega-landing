@@ -20,6 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const viewport: Viewport = { themeColor: "#0b1115" };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://reisanchez-direccion-ejecutiva.netlify.app"),
   title: {
     default: "Rei Sánchez | Dirección Ejecutiva",
     template: "%s | Rei Sánchez",
@@ -31,10 +32,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rei Sánchez | Dirección Ejecutiva",
     description: "Dirección ejecutiva para operaciones F&B y desarrollo de destinos gastronómicos de valor.",
+    url: "https://reisanchez-direccion-ejecutiva.netlify.app/",
     siteName: "Rei Sánchez | Dirección Ejecutiva",
     locale: "es_CO",
     type: "website",
   },
+  twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.svg" },
 };
