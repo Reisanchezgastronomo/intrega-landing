@@ -43,11 +43,8 @@ export function Footer() {
                                 <Link href="/servicios" className="text-white/40 text-sm hover:text-white/70 transition-colors">
                                     Servicios
                                 </Link>
-                                <Link href="/recursos" className="text-white/40 text-sm hover:text-white/70 transition-colors">
-                                    Recursos
-                                </Link>
-                                <Link href="/blog" className="text-white/40 text-sm hover:text-white/70 transition-colors">
-                                    Blog
+                                <Link href="/#ecosistema" className="text-white/40 text-sm hover:text-white/70 transition-colors">
+                                    Ecosistema
                                 </Link>
                                 <Link href="/contacto" className="text-white/40 text-sm hover:text-white/70 transition-colors">
                                     Contacto
