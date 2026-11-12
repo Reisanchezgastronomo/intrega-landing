@@ -191,7 +191,7 @@ export default function Servicios() {
 
                                 {/* Result quote */}
                                 <p className="font-mono text-xs text-[#C8C6D7]/70 border-t border-[#C8C6D7]/10 pt-4 italic">
-                                    "{service.result}"
+                                    &ldquo;{service.result}&rdquo;
                                 </p>
                             </motion.div>
                         ))}
