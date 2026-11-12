@@ -65,7 +65,7 @@ jobs:
           response=urlopen(local,timeout=12)
           data=response.read()
           assert response.headers.get_content_type()=="image/png", response.headers
-          assert data[:8]==b"\\x89PNG\\r\\n\\x1a\\n", "Imagen no es PNG valido"
+          assert data[:8]==bytes([137,80,78,71,13,10,26,10]), "Imagen no es PNG valido"
           w,h=struct.unpack(">II",data[16:24])
           assert (w,h)==(1200,630), (w,h)
           print("OK: og:image absoluta y PNG 1200 x 630 generado con exito")
