@@ -146,7 +146,7 @@ export default function Home() {
               </span>
 
               <blockquote className="text-2xl md:text-3xl lg:text-4xl text-[#F5F5F5] font-semibold leading-relaxed mb-12">
-                "La identidad no se proclama: debe sostenerse en la forma de operar y servir."
+                &ldquo;La identidad no se proclama: debe sostenerse en la forma de operar y servir.&rdquo;
               </blockquote>
 
               {/* Key points */}
