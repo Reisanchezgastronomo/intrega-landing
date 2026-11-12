@@ -146,7 +146,7 @@ export default function Home() {
               <div className="border-t border-[#bdd1c1]/50 pt-4">
                 <h3 className="text-xl font-semibold">INTEGRA · Transformación operativa</h3>
                 <p className="mt-2 text-[#baccc2]">Intervención en producción, servicio, rentabilidad, equipos y coherencia de la experiencia con la identidad del destino.</p>
-                <a href="https://intrega-landing.vercel.app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-[#bdd1c1] underline underline-offset-4">Conocer INTEGRA</a>
+                <a href="https://integra-operacion-mvp.vercel.app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-[#bdd1c1] underline underline-offset-4">Conocer INTEGRA</a>
               </div>
               <div className="border-t border-white/15 pt-4">
                 <h3 className="text-xl font-semibold">Sello Valor · Estándares en desarrollo</h3>
@@ -155,7 +155,7 @@ export default function Home() {
               <div className="border-t border-white/15 pt-4">
                 <h3 className="text-xl font-semibold">VIAJA · Experiencias del visitante</h3>
                 <p className="mt-2 text-[#baccc2]">Explora rutas e itinerarios de muestra en Colonia Tovar. La compra de experiencias aún no está habilitada.</p>
-                <a href="https://viaja-ven.vercel.app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-[#bdd1c1] underline underline-offset-4">Explorar el demostrador</a>
+                <a href="https://viaja-ven-rei-sanchez.vercel.app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-[#bdd1c1] underline underline-offset-4">Explorar el demostrador</a>
               </div>
             </div>
           </div>
