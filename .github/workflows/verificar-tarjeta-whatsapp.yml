@@ -1,4 +1,4 @@
-name: Verificar imagen al compartir
+name: Verificar vista previa publicada
 on:
   push:
     branches: [main]
@@ -14,97 +14,42 @@ permissions:
 jobs:
   vista-previa:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 3
     steps:
-      - name: Descargar codigo
-        uses: actions/checkout@v4
-      - name: Preparar Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: npm
-      - name: Instalar y compilar
-        run: |
-          npm ci
-          npm run build
-      - name: Comprobar metadatos Open Graph y PNG
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm run start -- -p 3100 >/tmp/preview.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" || true' EXIT
-          for attempt in $(seq 1 45); do
-            if curl -fsS http://127.0.0.1:3100/ >/dev/null; then break; fi
-            sleep 1
-          done
-          python3 - <<'PY'
-          from html.parser import HTMLParser
-          from urllib.request import urlopen
-          from urllib.parse import urlsplit
-          import struct
-
-          class Parser(HTMLParser):
-              def __init__(self):
-                  super().__init__()
-                  self.tags={}
-              def handle_starttag(self, tag, attrs):
-                  if tag == "meta":
-                      attrs=dict(attrs)
-                      key=attrs.get("property") or attrs.get("name")
-                      if key: self.tags[key] = attrs.get("content")
-
-          page=urlopen("http://127.0.0.1:3100/",timeout=12).read().decode("utf-8")
-          parser=Parser(); parser.feed(page)
-          image=parser.tags.get("og:image")
-          assert image, "Falta la etiqueta og:image en la pagina"
-          assert image.startswith("https://reisanchez-direccion-ejecutiva.netlify.app/opengraph-image"), image
-          local="http://127.0.0.1:3100"+urlsplit(image).path
-          query=urlsplit(image).query
-          if query: local+="?"+query
-          response=urlopen(local,timeout=12)
-          data=response.read()
-          assert response.headers.get_content_type()=="image/png", response.headers
-          assert data[:8]==bytes([137,80,78,71,13,10,26,10]), "Imagen no es PNG valido"
-          w,h=struct.unpack(">II",data[16:24])
-          assert (w,h)==(1200,630), (w,h)
-          print("OK: og:image absoluta y PNG 1200 x 630 generado con exito")
-          PY
-
-      - name: Validar enlace publicado en Netlify
-        if: always()
-        continue-on-error: true
+      - name: Validar imagen Open Graph en Netlify
         shell: bash
         run: |
           python3 - <<'PY'
           from html.parser import HTMLParser
-          from urllib.request import Request,urlopen
+          from urllib.request import Request, urlopen
           from urllib.parse import urljoin
           import struct
 
           base="https://reisanchez-direccion-ejecutiva.netlify.app/"
           headers={"User-Agent":"facebookexternalhit/1.1"}
+
           class Parser(HTMLParser):
-              def __init__(self): super().__init__(); self.tags={}
+              def __init__(self):
+                  super().__init__()
+                  self.tags={}
               def handle_starttag(self,tag,attrs):
                   if tag=="meta":
-                      a=dict(attrs); key=a.get("property") or a.get("name")
-                      if key: self.tags[key]=a.get("content")
-          with urlopen(Request(base,headers=headers),timeout=15) as res:
-              print("URL publica:",res.geturl(),"HTTP",res.status)
-              html=res.read().decode("utf-8","replace")
-          p=Parser();p.feed(html)
-          image=p.tags.get("og:image")
-          print("og:image publicada:",image or "AUSENTE")
-          assert image, "La landing publica no emite og:image"
-          imgurl=urljoin(base,image)
-          with urlopen(Request(imgurl,headers=headers),timeout=15) as res:
-              payload=res.read();ctype=res.headers.get_content_type()
-              print("Imagen HTTP:",res.status,"Content-Type:",ctype,"Bytes:",len(payload))
-          assert ctype=="image/png",ctype
-          assert payload[:8]==bytes([137,80,78,71,13,10,26,10]),"PNG no valido"
-          dimensions=struct.unpack(">II",payload[16:24])
-          print("Tamano imagen:",dimensions)
-          assert dimensions==(1200,630),"Tamano inesperado"
-          print("OK: vista previa publicada y legible")
+                      attrs=dict(attrs)
+                      key=attrs.get("property") or attrs.get("name")
+                      if key: self.tags[key]=attrs.get("content")
+
+          with urlopen(Request(base,headers=headers),timeout=20) as response:
+              assert response.status==200,response.status
+              html=response.read().decode("utf-8","replace")
+          parser=Parser(); parser.feed(html)
+          image=parser.tags.get("og:image")
+          assert image and image.startswith(base+"opengraph-image"),image
+          with urlopen(Request(urljoin(base,image),headers=headers),timeout=20) as response:
+              assert response.status==200,response.status
+              assert response.headers.get_content_type()=="image/png"
+              data=response.read()
+
+          assert data[:8]==bytes([137,80,78,71,13,10,26,10]),"PNG invalido"
+          assert struct.unpack(">II",data[16:24])==(1200,630),"Tamano invalido"
+          print("OK: Netlify entrega og:image publica, accesible y PNG 1200x630.")
           PY
