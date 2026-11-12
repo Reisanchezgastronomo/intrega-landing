@@ -129,16 +129,17 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl">Dirección y desarrollo de destinos gastronómicos.</h2>
               <p className="mt-6 text-lg leading-relaxed text-[#c4d0cb]">
-                La identidad de un territorio debe expresarse en su operación. Dirigimos la transformación de establecimientos,
-                productores y experiencias para convertir el patrimonio gastronómico en una oferta turística coherente y comercializable.
+                Convertimos la identidad gastronómica de un destino en experiencias turísticas de valor.
+                Mejoramos cómo funcionan los negocios con INTEGRA, preparamos sus estándares con Sello Valor
+                y presentamos sus rutas y experiencias al visitante mediante VIAJA.
               </p>
               <p className="mt-5 leading-relaxed text-[#bdcbc3]">
-                <strong className="text-white">Venezuela Auténtica</strong> es el proyecto demostrador de esta vertical,
-                con Colonia Tovar como aplicación inicial. No sustituye nuestros mandatos de dirección ejecutiva:
-                los extiende hacia el desarrollo de destinos.
+                <strong className="text-white">Venezuela Auténtica</strong> es el MVP comercial de esta iniciativa;
+                Colonia Tovar es su primer demostrador. Rei Sánchez | Dirección Ejecutiva asume la dirección
+                del proyecto y conserva sus modalidades empresariales de servicio.
               </p>
               <Link href="/contacto" className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[#bdd1c1] px-6 py-3 font-semibold text-[#102017] transition-colors hover:bg-white">
-                Conversemos sobre un mandato territorial
+                Conversemos sobre el proyecto
               </Link>
             </div>
             <div className="space-y-4">
@@ -149,11 +150,11 @@ export default function Home() {
               </div>
               <div className="border-t border-white/15 pt-4">
                 <h3 className="text-xl font-semibold">Sello Valor · Estándares en desarrollo</h3>
-                <p className="mt-2 text-[#baccc2]">Propuesta de evaluación y mejora de autenticidad, operación y experiencia. No es una certificación oficial ni un aval académico concedido.</p>
+                <p className="mt-2 text-[#baccc2]">Estándares de autenticidad, operación y experiencia en preparación. El sello aún no se ha otorgado.</p>
               </div>
               <div className="border-t border-white/15 pt-4">
                 <h3 className="text-xl font-semibold">VIAJA · Experiencias del visitante</h3>
-                <p className="mt-2 text-[#baccc2]">Demostrador de rutas e itinerarios de Colonia Tovar. Las experiencias mostradas son ilustrativas y no implican reservas activas.</p>
+                <p className="mt-2 text-[#baccc2]">Explora rutas e itinerarios de muestra en Colonia Tovar. La compra de experiencias aún no está habilitada.</p>
                 <a href="https://viaja-ven.vercel.app" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex font-semibold text-[#bdd1c1] underline underline-offset-4">Explorar el demostrador</a>
               </div>
             </div>
