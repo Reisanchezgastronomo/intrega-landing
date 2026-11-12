@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from "framer-motion";
 
 const navItems = [
@@ -21,7 +22,8 @@ export function Header() {
     });
 
     useEffect(() => {
-        setIsMounted(true);
+        const timer = setTimeout(() => setIsMounted(true), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     // Close mobile menu on route change or resize
@@ -107,7 +109,7 @@ export function Header() {
                     }}
                 >
                     {/* Logo */}
-                    <a
+                    <Link
                         href="/"
                         className="flex items-center gap-2 transition-all duration-300"
                     >
@@ -130,7 +132,7 @@ export function Header() {
                         >
                             INTEGRA
                         </span>
-                    </a>
+                    </Link>
 
                     {/* Navigation Links - Hidden on mobile */}
                     <div className="hidden md:flex items-center gap-6">
