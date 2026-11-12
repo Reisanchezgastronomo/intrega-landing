@@ -11,9 +11,10 @@ export function Header() {
             <span className="text-[10px] uppercase tracking-[0.16em] text-[#a9b8b0]">Dirección ejecutiva</span>
           </span>
         </Link>
-        <div className="hidden items-center gap-8 text-sm text-[#bcc9c1] md:flex">
+        <div className="hidden items-center gap-5 text-sm text-[#bcc9c1] md:flex">
           <Link href="/#prioridades" className="hover:text-white">Qué transformamos</Link>
           <Link href="/#modalidades" className="hover:text-white">Modalidades</Link>
+          <Link href="/#destinos-gastronomicos" className="hover:text-white">Destinos gastronómicos</Link>
           <Link href="/#trayectoria" className="hover:text-white">Trayectoria</Link>
         </div>
         <Link href="/contacto" className="shrink-0 rounded-full border border-[#bdd1c1]/65 px-4 py-2.5 text-sm font-semibold text-[#bdd1c1] transition-colors hover:bg-[#bdd1c1] hover:text-[#102017]">
