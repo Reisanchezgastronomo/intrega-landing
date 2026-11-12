@@ -216,7 +216,7 @@ export default function Home() {
             </div>
             <div className="mt-9 flex flex-wrap gap-5 text-sm font-semibold">
               <a href="https://reisanchez-direccion-ejecutiva.netlify.app" target="_blank" rel="noopener noreferrer" className="text-[#C8C6D7] underline underline-offset-4">Quién dirige el sistema</a>
-              <a href="https://viaja-ven.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#C8C6D7] underline underline-offset-4">Explorar VIAJA (demo)</a>
+              <a href="https://viaja-ven-rei-sanchez.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#C8C6D7] underline underline-offset-4">Explorar VIAJA (demo)</a>
             </div>
           </div>
         </section>
