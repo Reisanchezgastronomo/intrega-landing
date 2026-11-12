@@ -70,3 +70,41 @@ jobs:
           assert (w,h)==(1200,630), (w,h)
           print("OK: og:image absoluta y PNG 1200 x 630 generado con exito")
           PY
+
+      - name: Validar enlace publicado en Netlify
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from urllib.request import Request,urlopen
+          from urllib.parse import urljoin
+          import struct
+
+          base="https://reisanchez-direccion-ejecutiva.netlify.app/"
+          headers={"User-Agent":"facebookexternalhit/1.1"}
+          class Parser(HTMLParser):
+              def __init__(self): super().__init__(); self.tags={}
+              def handle_starttag(self,tag,attrs):
+                  if tag=="meta":
+                      a=dict(attrs); key=a.get("property") or a.get("name")
+                      if key: self.tags[key]=a.get("content")
+          with urlopen(Request(base,headers=headers),timeout=15) as res:
+              print("URL publica:",res.geturl(),"HTTP",res.status)
+              html=res.read().decode("utf-8","replace")
+          p=Parser();p.feed(html)
+          image=p.tags.get("og:image")
+          print("og:image publicada:",image or "AUSENTE")
+          assert image, "La landing publica no emite og:image"
+          imgurl=urljoin(base,image)
+          with urlopen(Request(imgurl,headers=headers),timeout=15) as res:
+              payload=res.read();ctype=res.headers.get_content_type()
+              print("Imagen HTTP:",res.status,"Content-Type:",ctype,"Bytes:",len(payload))
+          assert ctype=="image/png",ctype
+          assert payload[:8]==bytes([137,80,78,71,13,10,26,10]),"PNG no valido"
+          dimensions=struct.unpack(">II",payload[16:24])
+          print("Tamano imagen:",dimensions)
+          assert dimensions==(1200,630),"Tamano inesperado"
+          print("OK: vista previa publicada y legible")
+          PY
