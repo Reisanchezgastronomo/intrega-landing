@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Integra" }],
   creator: "Integra",
   publisher: "Integra",
-  metadataBase: new URL("https://intrega-landing.vercel.app/"),
+  metadataBase: new URL("https://integra-operacion-mvp.vercel.app/"),
   alternates: {
     canonical: "/",
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: "INTEGRA | Transformación Operativa · Destinos Gastronómicos",
     description:
       "Transformación operativa de establecimientos y destinos gastronómicos desde su identidad. INTEGRA integra Dirección Ejecutiva, Sello Valor y VIAJA.",
-    url: "https://intrega-landing.vercel.app/",
+    url: "https://integra-operacion-mvp.vercel.app/",
     siteName: "INTEGRA",
     locale: "es_ES",
     type: "website",
