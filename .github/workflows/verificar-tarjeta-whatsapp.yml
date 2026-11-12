@@ -1,0 +1,72 @@
+name: Verificar imagen al compartir
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/layout.tsx"
+      - "app/opengraph-image.tsx"
+      - ".github/workflows/verificar-tarjeta-whatsapp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  vista-previa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Instalar y compilar
+        run: |
+          npm ci
+          npm run build
+      - name: Comprobar metadatos Open Graph y PNG
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run start -- -p 3100 >/tmp/preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for attempt in $(seq 1 45); do
+            if curl -fsS http://127.0.0.1:3100/ >/dev/null; then break; fi
+            sleep 1
+          done
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from urllib.request import urlopen
+          from urllib.parse import urlsplit
+          import struct
+
+          class Parser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.tags={}
+              def handle_starttag(self, tag, attrs):
+                  if tag == "meta":
+                      attrs=dict(attrs)
+                      key=attrs.get("property") or attrs.get("name")
+                      if key: self.tags[key] = attrs.get("content")
+
+          page=urlopen("http://127.0.0.1:3100/",timeout=12).read().decode("utf-8")
+          parser=Parser(); parser.feed(page)
+          image=parser.tags.get("og:image")
+          assert image, "Falta la etiqueta og:image en la pagina"
+          assert image.startswith("https://reisanchez-direccion-ejecutiva.netlify.app/opengraph-image"), image
+          local="http://127.0.0.1:3100"+urlsplit(image).path
+          query=urlsplit(image).query
+          if query: local+="?"+query
+          response=urlopen(local,timeout=12)
+          data=response.read()
+          assert response.headers.get_content_type()=="image/png", response.headers
+          assert data[:8]==b"\\x89PNG\\r\\n\\x1a\\n", "Imagen no es PNG valido"
+          w,h=struct.unpack(">II",data[16:24])
+          assert (w,h)==(1200,630), (w,h)
+          print("OK: og:image absoluta y PNG 1200 x 630 generado con exito")
+          PY
