@@ -49,7 +49,7 @@ export default function Nosotros() {
                         </span>
 
                         <blockquote className="text-2xl md:text-3xl lg:text-4xl text-[#F5F5F5] font-semibold leading-relaxed mb-8">
-                            "La identidad se sostiene cuando la operación es coherente."
+                            &ldquo;La identidad se sostiene cuando la operación es coherente.&rdquo;
                         </blockquote>
 
                         <p className="text-[#F5F5F5]/70 text-lg max-w-2xl mx-auto">
@@ -209,7 +209,7 @@ export default function Nosotros() {
                         </h2>
 
                         <p className="text-xl text-[#C8C6D7] font-semibold mb-12">
-                            "Tu paz mental operativa es nuestro KPI."
+                            &ldquo;Una experiencia coherente se construye desde la operación.&rdquo;
                         </p>
 
                         {/* CTA */}
