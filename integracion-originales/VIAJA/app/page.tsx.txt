@@ -126,9 +126,9 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl">
             <p className="text-sm font-semibold text-gray-900">Venezuela Auténtica · una iniciativa de Rei Sánchez | Dirección Ejecutiva</p>
             <p className="mt-2 max-w-4xl text-sm leading-relaxed text-text-muted">
-              VIAJA muestra cómo descubrir y planificar experiencias de un destino. INTEGRA transforma la operación de sus
-              establecimientos y Sello Valor propone evaluar autenticidad y estándares de experiencia antes de reconocerlos.
-              Colonia Tovar es una demostración con información ilustrativa: no hay rutas certificadas ni reservas confirmadas.
+              Convertimos la identidad gastronómica de un destino en experiencias turísticas de valor. INTEGRA mejora cómo funcionan
+              los negocios; Sello Valor prepara la evaluación de estándares; VIAJA muestra rutas al visitante.
+              Este es el demostrador de Colonia Tovar, con información ilustrativa y sin compras ni sellos otorgados.
             </p>
             <div className="mt-3 flex flex-wrap gap-5 text-sm font-semibold">
               <a href="https://reisanchez-direccion-ejecutiva.netlify.app" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Dirección responsable</a>
