@@ -25,11 +25,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "INTEGRA | Transformación Operativa · Destinos Gastronómicos",
+    default: "INTEGRA | Dirección y transformación operativa",
     template: "%s | INTEGRA",
   },
   description:
-    "Transformación operativa de establecimientos y destinos gastronómicos desde su identidad. INTEGRA integra Dirección Ejecutiva, Sello Valor y VIAJA.",
+    "La identidad se sostiene desde la operación. Dirección y transformación operativa para negocios gastronómicos bajo Rei Sánchez | Dirección Ejecutiva.",
   keywords: [
     "dirección operativa gastronómica",
     "transformación digital restaurantes",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "INTEGRA | Transformación Operativa · Destinos Gastronómicos",
+    title: "INTEGRA | Dirección y transformación operativa",
     description:
-      "Transformación operativa de establecimientos y destinos gastronómicos desde su identidad. INTEGRA integra Dirección Ejecutiva, Sello Valor y VIAJA.",
+      "La identidad se sostiene desde la operación. Dirección y transformación operativa para negocios gastronómicos bajo Rei Sánchez | Dirección Ejecutiva.",
     url: "https://integra-operacion-mvp.vercel.app/",
     siteName: "INTEGRA",
     locale: "es_ES",
@@ -58,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "INTEGRA | Transformación Operativa · Destinos Gastronómicos",
+    title: "INTEGRA | Dirección y transformación operativa",
     description:
-      "Transformación operativa de establecimientos y destinos gastronómicos desde su identidad. INTEGRA integra Dirección Ejecutiva, Sello Valor y VIAJA.",
+      "La identidad se sostiene desde la operación. Dirección y transformación operativa para negocios gastronómicos bajo Rei Sánchez | Dirección Ejecutiva.",
   },
   robots: {
     index: true,
