@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Conversemos sobre las prioridades operativas de tu empresa y la posibilidad de asumir un mandato ejecutivo.",
 };
 
+const bookingUrl = "https://cal.com/rei-sanchez-direccion-ejecutiva";
 const emailAddress = "reisanchezgastronomo@gmail.com";
 const emailSubject = encodeURIComponent("Conversación ejecutiva | Prioridades operativas");
 const emailBody = encodeURIComponent("Hola, quisiera conversar sobre una prioridad operativa de mi empresa.\n\nEmpresa:\nCiudad / país:\nPrioridad principal:\n");
@@ -22,7 +23,14 @@ export default function ContactoPage() {
         <h1 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Conversemos sobre tus prioridades operativas.</h1>
         <p className="mt-7 max-w-2xl text-lg leading-relaxed text-[#b7c4bd]">Si diriges o eres propietario de una empresa gastronómica o de alimentación, podemos explorar si existe un mandato ejecutivo viable para tu organización.</p>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        <section className="mt-12 rounded-2xl border border-[#bdd1c1]/40 bg-[#142121] p-7 sm:p-9">
+          <p className="text-sm font-medium uppercase tracking-widest text-[#d7b98c]">Agenda ejecutiva</p>
+          <h2 className="mt-4 text-2xl font-semibold">Conversación de encaje ejecutivo · 20 minutos</h2>
+          <p className="mt-4 max-w-2xl leading-relaxed text-[#b7c4bd]">Conversemos sobre las prioridades de tu organización y evaluemos si existe encaje para una vinculación ejecutiva. Sin diagnósticos gratuitos ni compromisos anticipados.</p>
+          <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex min-h-12 items-center justify-center rounded-full bg-[#bdd1c1] px-6 py-3 font-semibold text-[#102017] transition-colors hover:bg-white">Consultar disponibilidad y reservar</a>
+        </section>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
           <a href={emailLink} className="rounded-2xl border border-white/20 bg-[#142025] p-7 transition-colors hover:border-[#bdd1c1]">
             <p className="text-sm font-medium uppercase tracking-widest text-[#d7b98c]">Por correo electrónico</p>
             <h2 className="mt-5 text-xl font-semibold">Escribir a Rei Sánchez</h2>
@@ -40,7 +48,7 @@ export default function ContactoPage() {
         <div className="mt-10 rounded-xl border border-white/10 p-6 text-sm leading-relaxed text-[#b7c4bd]">
           <p className="font-semibold text-white">Para una conversación útil</p>
           <p className="mt-2">Indica el nombre de la empresa, la ciudad y el principal reto de operación, producción o rentabilidad. Revisaremos el encaje antes de acordar un alcance de trabajo.</p>
-          <p className="mt-5">También puedes consultar el <a href="https://www.linkedin.com/in/reisanchez-fyb-operations/" target="_blank" rel="noopener noreferrer" className="font-medium text-[#bdd1c1] underline underline-offset-4">perfil profesional en LinkedIn</a>.</p>
+          <p className="mt-5">También puedes consultar el <a href="https://www.linkedin.com/in/reisanchez-direccion-ejecutiva-fyb/" target="_blank" rel="noopener noreferrer" className="font-medium text-[#bdd1c1] underline underline-offset-4">perfil profesional en LinkedIn</a>.</p>
         </div>
 
         <p className="mt-8 text-sm text-[#81938a]">Esta página no recoge datos mediante formularios. El contacto se realiza directamente desde tu aplicación de correo o WhatsApp.</p>
