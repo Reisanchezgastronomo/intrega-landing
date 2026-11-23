@@ -12,8 +12,9 @@ export function Footer() {
         <div className="flex flex-wrap gap-5 text-sm">
           <Link href="/#modalidades" className="hover:text-white">Modalidades</Link>
           <Link href="/#trayectoria" className="hover:text-white">Trayectoria</Link>
+          <a href="https://cal.com/rei-sanchez-direccion-ejecutiva" target="_blank" rel="noopener noreferrer" className="hover:text-white">Reservar reunión</a>
           <Link href="/contacto" className="hover:text-white">Contacto</Link>
-          <a href="https://www.linkedin.com/in/reisanchez-fyb-operations/" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/reisanchez-direccion-ejecutiva-fyb/" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>
         </div>
       </div>
       <div className="mx-auto mt-9 max-w-6xl border-t border-white/10 pt-6 text-xs text-[#82958c]">
