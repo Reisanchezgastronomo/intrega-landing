@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const bookingUrl = "https://cal.com/rei-sanchez-direccion-ejecutiva";
+
 const modalities = [
   {
     id: "01",
@@ -53,9 +55,9 @@ export default function Home() {
             Simplificar para transformar.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link href="/contacto" className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#bdd1c1] px-7 py-3 font-semibold text-[#102017] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#bdd1c1]">
-              Conversemos sobre tus prioridades
-            </Link>
+            <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#bdd1c1] px-7 py-3 font-semibold text-[#102017] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#bdd1c1]">
+              Reservar conversación ejecutiva
+            </a>
             <a href="#modalidades" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-7 py-3 font-medium text-white transition-colors hover:border-white/70">
               Conoce cómo trabajamos
             </a>
@@ -183,7 +185,7 @@ export default function Home() {
                 Combino ingeniería, producción gastronómica, dirección de equipos y gestión económica. Mi enfoque integra productividad, identidad empresarial y capacidad de ejecución.
               </p>
               <a
-                href="https://www.linkedin.com/in/reisanchez-fyb-operations/"
+                href="https://www.linkedin.com/in/reisanchez-direccion-ejecutiva-fyb/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex font-semibold underline decoration-[#8aa494] underline-offset-8 hover:decoration-[#14211e]"
@@ -217,9 +219,9 @@ export default function Home() {
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-[#b7ccbc]">Primer paso</p>
           <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">Conversemos sobre la prioridad que hoy limita tu operación.</h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#b7c4bd]">Una conversación breve permite identificar si existe una necesidad concreta y si tiene sentido definir un mandato ejecutivo. Sin diagnósticos extensos ni promesas anticipadas.</p>
-          <Link href="/contacto" className="mt-9 inline-flex min-h-12 items-center justify-center rounded-full bg-[#bdd1c1] px-8 py-3 font-semibold text-[#102017] transition-colors hover:bg-white">
-            Solicitar una conversación ejecutiva
-          </Link>
+          <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-9 inline-flex min-h-12 items-center justify-center rounded-full bg-[#bdd1c1] px-8 py-3 font-semibold text-[#102017] transition-colors hover:bg-white">
+            Reservar conversación de encaje · 20 min
+          </a>
         </div>
       </section>
     </main>
