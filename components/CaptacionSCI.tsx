@@ -3,18 +3,23 @@ import { useRef, useState, type FormEvent } from "react";
 
 export default function CaptacionSCI() {
  const eventId = useRef("");
+ const previous = useRef("");
+ const busy = useRef(false);
  const [status,setStatus] = useState<"idle"|"pending"|"ok"|"error">("idle");
  async function submit(e: FormEvent<HTMLFormElement>) {
   e.preventDefault();
   const form=e.currentTarget;
-  if (!eventId.current) eventId.current=crypto.randomUUID();
+  if(busy.current) return;
   const data=Object.fromEntries(new FormData(form));
+  const fingerprint=JSON.stringify(data);
+  if (!eventId.current || previous.current!==fingerprint) eventId.current=crypto.randomUUID();
+  previous.current=fingerprint;busy.current=true;
   setStatus("pending");
   try {
    const response=await fetch("/api/sci/capture",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...data,eventId:eventId.current,source:"direccion-ejecutiva"})});
    if(!response.ok) throw new Error("capture");
    setStatus("ok");form.reset();eventId.current="";
-  } catch {setStatus("error");}
+  } catch {setStatus("error");} finally {busy.current=false;}
  }
  const input="mt-2 w-full rounded-lg border border-white/25 bg-[#0b1115] p-3 text-white";
  return <section className="mt-10 rounded-2xl border border-white/20 bg-[#142025] p-7 sm:p-9">
