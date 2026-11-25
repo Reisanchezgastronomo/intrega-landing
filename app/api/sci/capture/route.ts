@@ -1,3 +1,4 @@
+import { persistCapture } from "../../../../lib/sci-persistence";
 import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 const priorities = ["Rentabilidad y costes","Producción y productividad","Operaciones multisede","Equipos y estándares","Expansión y nuevos negocios","Identidad y experiencia"];
@@ -13,13 +14,9 @@ export async function POST(request: Request) {
   payload[key]=value.trim();
  }
  if(data.website || data.consent!=="yes" || !priorities.includes(payload.priority) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email) || typeof data.eventId!=="string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(data.eventId)) return NextResponse.json({ok:false},{status:400});
- const endpoint=process.env.SCI_CAPTURE_ENDPOINT, token=process.env.SCI_CAPTURE_TOKEN;
- if(!endpoint || !token) return NextResponse.json({ok:false},{status:503});
  try {
-  if(new URL(endpoint).protocol!=="https:") throw new Error();
-  const result=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},body:JSON.stringify({...payload,eventId:data.eventId,source:"direccion-ejecutiva",mode:process.env.SCI_MODE==="real"?"real":"test",consent:"yes",consentVersion:"1.0",receivedAt:new Date().toISOString()}),cache:"no-store",redirect:"error",signal:AbortSignal.timeout(10000)});
-  if(!result.ok) throw new Error();
-  const receipt=await result.json(); if(receipt.persisted!==true || receipt.eventId!==data.eventId) throw new Error();
+  const receipt=await persistCapture({...payload,eventId:data.eventId,source:"direccion-ejecutiva",mode:process.env.SCI_MODE==="real"?"real":"test",consent:"yes",consentVersion:"1.0",receivedAt:new Date().toISOString()});
+  if(!receipt.persisted || receipt.eventId!==data.eventId) throw new Error("Unverified receipt");
   return NextResponse.json({ok:true});
  } catch {return NextResponse.json({ok:false},{status:503});}
 }
