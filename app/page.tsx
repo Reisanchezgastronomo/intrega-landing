@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import CaptacionSCI from "../components/CaptacionSCI";
 
 const bookingUrl = "https://cal.com/rei-sanchez-direccion-ejecutiva";
 
@@ -61,6 +62,9 @@ export default function Home() {
             <a href="#modalidades" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-7 py-3 font-medium text-white transition-colors hover:border-white/70">
               Conoce cómo trabajamos
             </a>
+            <a href="#captacion" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-7 py-3 font-medium text-white transition-colors hover:border-white/70">
+              Cuéntanos tu prioridad empresarial
+            </a>
           </div>
           <div className="mt-20 grid gap-6 border-t border-white/15 pt-8 text-sm text-[#aebcb6] sm:grid-cols-3">
             <p><span className="block font-semibold text-white">Responsabilidad real</span>Mandatos con funciones y autoridad delimitadas.</p>
@@ -104,6 +108,12 @@ export default function Home() {
           <div className="mt-9 rounded-xl border border-[#b7ccbc]/25 p-6 text-sm leading-relaxed text-[#c1ccc6]">
             <strong className="text-white">Alcances por mercado.</strong> En Colombia podemos acordar activaciones operativas iniciales de 30 días. En Venezuela evaluamos mandatos presenciales de 90 a 180 días. En todos los casos, el alcance, la autoridad, los recursos y las condiciones se definen antes de asumir responsabilidad.
           </div>
+        </div>
+      </section>
+
+      <section id="captacion" aria-label="Contacto ejecutivo" className="scroll-mt-24 px-5 pb-20 pt-8 sm:px-8 md:pb-28">
+        <div className="mx-auto max-w-4xl">
+          <CaptacionSCI />
         </div>
       </section>
 
