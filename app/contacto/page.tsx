@@ -1,3 +1,4 @@
+import CaptacionSCI from "../../components/CaptacionSCI";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -51,7 +52,7 @@ export default function ContactoPage() {
           <p className="mt-5">También puedes consultar el <a href="https://www.linkedin.com/in/reisanchez-direccion-ejecutiva-fyb/" target="_blank" rel="noopener noreferrer" className="font-medium text-[#bdd1c1] underline underline-offset-4">perfil profesional en LinkedIn</a>.</p>
         </div>
 
-        <p className="mt-8 text-sm text-[#81938a]">Esta página no recoge datos mediante formularios. El contacto se realiza directamente desde tu aplicación de correo o WhatsApp.</p>
+        <CaptacionSCI />
       </div>
     </main>
   );
