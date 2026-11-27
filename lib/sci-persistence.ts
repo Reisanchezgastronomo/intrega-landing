@@ -5,7 +5,7 @@ const tabId = Number(process.env.SCI_AUDIT_TAB_ID);
 const base = "https://sheets.googleapis.com/v4/spreadsheets/" + sheetId;
 const b64 = (value: unknown) => Buffer.from(JSON.stringify(value)).toString("base64url");
 type Capture = { eventId:string; source:string; mode:string; consent:string; consentVersion:string; receivedAt:string; [key:string]:string };
-async function accessToken() {
+export async function accessToken() {
  const email=process.env.SCI_GOOGLE_CLIENT_EMAIL, key=process.env.SCI_GOOGLE_PRIVATE_KEY?.replace(/\\n/g,"\n");
  if(!email||!key) throw new Error("Google credentials unavailable");
  const now=Math.floor(Date.now()/1000);
