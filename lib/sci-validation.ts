@@ -7,7 +7,7 @@ export function validateCapture(data:Record<string,unknown>,source:"direccion-ej
  for(const [key,max] of Object.entries({...fields,...attributionFields})){
   const value=data[key];
   if(value===undefined||value===null||value===""){if(required.has(key))return null;payload[key]="";continue;}
-  if(typeof value!=="string"||value.length>max||/[\u0000-\u001f]/.test(value))return null;
+  if(typeof value!=="string"||value.length>max||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(value))return null;
   payload[key]=value.trim();
   if(required.has(key)&&!payload[key])return null;
  }
