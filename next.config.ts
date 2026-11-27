@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  // Route the public editorial HTML as a direct, shareable URL.
+  async rewrites() {
+    return [{ source: "/una-buena-taza", destination: "/una-buena-taza/index.html" }];
+  },
   // Enable React strict mode for better performance patterns
   reactStrictMode: true,
   // Compress responses for faster transfer
