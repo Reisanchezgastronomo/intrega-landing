@@ -19,13 +19,16 @@ export default function CaptacionSCI() {
    const response=await fetch("/api/sci/capture",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...data,eventId:eventId.current,source:"direccion-ejecutiva"})});
    if(response.status===429) {setStatus("limited");return;}
    if(!response.ok) throw new Error("capture");
-   setStatus("ok");form.reset();eventId.current="";
+   setStatus("ok");
+   try { sessionStorage.setItem("sci-una-buena-taza-v1",JSON.stringify({name:String(data.name||""),company:String(data.company||""),sector:String(data.sector||""),priority:String(data.priority||""),at:Date.now()})); } catch {}
+   form.reset();eventId.current="";
+   window.location.assign("/una-buena-taza/");
   } catch {setStatus("error");} finally {busy.current=false;}
  }
  const input="mt-2 w-full rounded-lg border border-white/25 bg-[#0b1115] p-3 text-white";
  return <section className="mt-10 rounded-2xl border border-white/20 bg-[#142025] p-7 sm:p-9">
  <h2 className="text-2xl font-semibold">Cuéntanos tu prioridad empresarial</h2>
- <p className="mt-3 text-sm text-[#b7c4bd]">Utilizaremos tus datos para valorar el encaje ejecutivo y responder a tu solicitud.</p>
+ <p className="mt-3 text-sm text-[#b7c4bd]">Al completar y enviar este formulario recibirás inmediatamente, sin coste, «Una buena taza»: un cuaderno digital interactivo con simulador económico y ficha personalizada en PDF. También utilizaremos tus datos para valorar el encaje ejecutivo y responder a tu solicitud.</p>
  <form onSubmit={submit} className="mt-6 grid gap-4">
  <label>Nombre<input name="name" required maxLength={120} autoComplete="name" className={input}/></label>
  <label>Empresa<input name="company" required maxLength={160} autoComplete="organization" className={input}/></label>
@@ -38,7 +41,7 @@ export default function CaptacionSCI() {
  <div hidden aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off"/></label></div>
  <label className="flex gap-3 text-sm"><input type="checkbox" name="consent" required value="yes"/>Autorizo el tratamiento de estos datos para responder a mi solicitud de conversación ejecutiva. No implica suscripción a comunicaciones comerciales.</label>
  <details className="text-sm text-[#d5e0d8]"><summary className="cursor-pointer font-medium">Privacidad y tratamiento de datos</summary><p className="mt-2">Responsable: Rei Sánchez — Dirección Ejecutiva · Transformación · Autonomía. Los datos se utilizan para valorar el encaje ejecutivo y responder a tu solicitud. El registro se conserva en una base de acceso restringido mediante Google Sheets; la plataforma de alojamiento procesa la solicitud. Revisaremos la necesidad de conservar tus datos a los doce meses de la última interacción significativa y eliminaremos los que ya no sean necesarios, salvo obligaciones aplicables. No se incorpora tu correo a campañas ni al newsletter. Puedes solicitar acceso, corrección o eliminación escribiendo a <a className="underline" href="mailto:reisanchezgastronomo@gmail.com">reisanchezgastronomo@gmail.com</a>. Evita incluir datos sensibles o información confidencial de terceros.</p></details>
- <button type="submit" disabled={status==="pending"} className="rounded-full bg-[#bdd1c1] px-6 py-3 font-semibold text-[#102017] disabled:opacity-50">{status==="pending"?"Registrando…":"Enviar solicitud"}</button>
- <p role="status">{status==="ok"?"Solicitud registrada. Puedes reservar una conversación en nuestra agenda.":status==="limited"?"Demasiadas solicitudes. Espera unos minutos antes de reintentar; tus datos siguen en el formulario.":status==="error"?"No se ha confirmado el registro. Puedes reintentar o utilizar los canales de contacto existentes.":""}</p>
+ <button type="submit" disabled={status==="pending"} className="rounded-full bg-[#bdd1c1] px-6 py-3 font-semibold text-[#102017] disabled:opacity-50">{status==="pending"?"Registrando…":"Enviar y recibir mi cuaderno"}</button>
+ <p role="status">{status==="ok"?"Solicitud registrada. Abriendo tu cuaderno Una buena taza…":status==="limited"?"Demasiadas solicitudes. Espera unos minutos antes de reintentar; tus datos siguen en el formulario.":status==="error"?"No se ha confirmado el registro. Puedes reintentar o utilizar los canales de contacto existentes.":""}</p>
  </form></section>;
 }
