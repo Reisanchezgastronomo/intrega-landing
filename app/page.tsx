@@ -114,6 +114,11 @@ export default function Home() {
       <section id="captacion" aria-label="Contacto ejecutivo" className="scroll-mt-24 px-5 pb-20 pt-8 sm:px-8 md:pb-28">
         <div className="mx-auto max-w-4xl">
           <CaptacionSCI />
+          <div className="mt-6 rounded-xl border border-[#bdd1c1]/30 bg-[#142121] p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#bdd1c1]">Una demostración antes de conversar</p>
+            <p className="mt-3 text-sm leading-relaxed text-[#b7c4bd]">«Una buena taza» permite experimentar, sin compromiso, cómo conectamos calidad, operación, economía y autonomía empresarial.</p>
+            <Link href="/una-buena-taza/" className="mt-4 inline-flex rounded-full border border-[#bdd1c1]/70 px-5 py-3 text-sm font-semibold text-[#bdd1c1] hover:bg-[#bdd1c1] hover:text-[#102017]">Explorar el cuaderno interactivo →</Link>
+          </div>
         </div>
       </section>
 
