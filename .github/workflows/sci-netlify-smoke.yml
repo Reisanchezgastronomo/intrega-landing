@@ -1,0 +1,46 @@
+name: "SCI Netlify smoke — prueba puntual QA"
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/sci-netlify-smoke.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: "Comprobar HTTPS, formulario y cuaderno en producción"
+        shell: bash
+        run: |
+          set -euo pipefail
+          ORIGIN="https://reisanchez-direccion-ejecutiva.netlify.app"
+          for path in "/" "/contacto" "/una-buena-taza/" "/una-buena-taza/assets/sci-attribution.js"; do
+            status=$(curl --fail-with-body --silent --show-error --location --connect-timeout 10 --max-time 25 --output /tmp/sci-page --write-out '%{http_code}' "$ORIGIN$path" || true)
+            echo "GET $path: HTTP $status"
+            if [[ "$status" != "200" ]]; then exit 1; fi
+            if [[ "$path" == "/contacto" ]] && ! grep -qi "cuaderno" /tmp/sci-page; then echo "ERR: formulario no encontrado"; exit 1; fi
+          done
+      - name: "Prueba controlada POST a SCI (registro QA excluido)"
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/sci-payload.json <<'SCIQA'
+          {"name":"TEST_SCI_NETLIFY_20261127","company":"TEST_TECNICO_NO_CONTACTAR","email":"sci-netlify-qa@example.invalid","market":"QA","role":"QA","sector":"QA","priority":"Rentabilidad y costes","context":"Prueba automatizada GitHub Actions, excluir del CRM y reportes","eventId":"a920bc5c-620b-477d-acdb-26ab27d00111","source":"direccion-ejecutiva","consent":"yes","emailCopyOptin":"","followupOptin":"","product":"una-buena-taza","attributionSource":"github-actions-qa","attributionMedium":"test","attributionCampaign":"qa-20261127","attributionContent":"netlify-e2e","landingPath":"/contacto","referrerHost":""}
+          SCIQA
+          ORIGIN="https://reisanchez-direccion-ejecutiva.netlify.app"
+          status=$(curl --silent --show-error --connect-timeout 10 --max-time 40 --output /tmp/sci-response --write-out '%{http_code}' -X POST "$ORIGIN/api/sci/capture" -H "Origin: $ORIGIN" -H "Content-Type: application/json" --data-binary @/tmp/sci-payload.json || true)
+          echo "POST /api/sci/capture: HTTP $status"
+          echo "QA eventId: a920bc5c-620b-477d-acdb-26ab27d00111"
+          if [[ "$status" != "200" ]]; then
+            echo "::error::El POST a SCI no confirmó captura (HTTP $status)."
+            exit 1
+          fi
+          if ! grep -q '"ok":true' /tmp/sci-response; then
+            echo "::error::La respuesta no confirma persistencia."
+            exit 1
+          fi
+          echo "PASS: respuesta exitosa. Verificar ahora presencia de QA eventId en Base Maestra."
