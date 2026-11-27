@@ -44,3 +44,24 @@ jobs:
             exit 1
           fi
           echo "PASS: respuesta exitosa. Verificar ahora presencia de QA eventId en Base Maestra."
+
+      - name: "Verificar analítica web anónima (evento QA, excluido del tablero)"
+        shell: bash
+        run: |
+          set -euo pipefail
+          ORIGIN="https://reisanchez-direccion-ejecutiva.netlify.app"
+          cat >/tmp/web-metric.json <<'JSON'
+          {"eventId":"a712407b-fb68-4219-9390-602b312aaa01","event":"pdf_click","path":"/una-buena-taza/","channel":"github-actions-qa","campaign":"sci-web-qa","qa":true}
+          JSON
+          for attempt in 1 2 3 4 5; do
+            asset=$(curl -sS -L -o /tmp/web-asset -w '%{http_code}' "$ORIGIN/una-buena-taza/assets/sci-web-metrics.js" || true)
+            if [[ "$asset" == "200" ]] && grep -q 'sciTrack' /tmp/web-asset; then break; fi
+            sleep 15
+          done
+          test "$asset" = "200"
+          grep -q 'sciTrack' /tmp/web-asset
+          status=$(curl -sS -o /tmp/web-response -w '%{http_code}' -X POST "$ORIGIN/api/sci/metric" -H "Origin: $ORIGIN" -H "Content-Type: application/json" --data-binary @/tmp/web-metric.json || true)
+          echo "POST evento anónimo QA: HTTP $status"
+          test "$status" = "200"
+          grep -q '"ok":true' /tmp/web-response
+          echo "PASS: evento QA aceptado; requiere comprobar fila TEST en Base Maestra."
