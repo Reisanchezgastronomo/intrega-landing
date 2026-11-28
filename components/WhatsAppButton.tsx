@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 export const WhatsAppButton = () => {
-    const whatsappNumber = "34672553578"; // +34 672 55 35 78
+    const whatsappNumber = "573019900983"; // +57 301 990 0983
     const whatsappMessage = encodeURIComponent(
         "Hola, vi su web y me interesa hablar sobre mi operación. ¿Podemos agendar una llamada?"
     );
